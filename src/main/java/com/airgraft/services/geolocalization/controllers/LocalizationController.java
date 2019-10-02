@@ -1,8 +1,10 @@
 package com.airgraft.services.geolocalization.controllers;
 
 import com.airgraft.services.geolocalization.model.GeolocInfo;
+import com.airgraft.services.geolocalization.services.TimezoneService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -22,18 +24,8 @@ public class LocalizationController {
 
     static Logger LOG = LoggerFactory.getLogger(LocalizationController.class);
 
-    TimeZoneEngine engine;
-
-    @PostConstruct
-    private void init() {
-        LOG.info("Initializing Service >>> " );
-
-        LOG.info(" ... Loading Timezone Database " );
-        engine = TimeZoneEngine.initialize();
-
-        LOG.info("<<< Initializing Service " );
-
-    }
+    @Autowired
+    TimezoneService timezoneService;
 
     @GetMapping(value = "/timezones", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<GeolocInfo> getLocation(
@@ -45,12 +37,12 @@ public class LocalizationController {
         geolocInfo.setLongitude(longitude);
         geolocInfo.setLatitude(latitude);
 
-        Optional<ZoneId> maybeZneId = engine.query(latitude, longitude);
+        String timezoneId = timezoneService.getTimezone(latitude, longitude);
 
-        if (!maybeZneId.isPresent()) {
+        if (timezoneId == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        geolocInfo.setTimezoneId(maybeZneId.get().toString());
+        geolocInfo.setTimezoneId(timezoneId);
         return new ResponseEntity<>(geolocInfo, HttpStatus.OK);
     }
 

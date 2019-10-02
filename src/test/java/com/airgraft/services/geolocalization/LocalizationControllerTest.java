@@ -1,6 +1,7 @@
 package com.airgraft.services.geolocalization;
 
 import com.airgraft.services.geolocalization.controllers.LocalizationController;
+import com.airgraft.services.geolocalization.services.TimezoneService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class LocalizationControllerTest {
 
     @Autowired
     private MockMvc mvc;
+
+    @Autowired
+    private TimezoneService service;
 
     @Test
     public void test200() throws Exception {
