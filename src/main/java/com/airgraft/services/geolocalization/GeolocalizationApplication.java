@@ -5,11 +5,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.airgraft.services.geolocalization.services", "com.airgraft.services.geolocalization.controllers"})
-public class GeolocalisationApplication {
+@ComponentScan(basePackages = {"com.airgraft.services.geolocalization.config","com.airgraft.services.geolocalization.services", "com.airgraft.services.geolocalization.controllers"})
+public class GeolocalizationApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(GeolocalisationApplication.class, args);
+        SpringApplication.run(GeolocalizationApplication.class, args);
     }
+
+
 
 }

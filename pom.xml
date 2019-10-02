@@ -35,10 +35,30 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Timezone table-->
         <dependency>
             <groupId>net.iakovlev</groupId>
             <artifactId>timeshape</artifactId>
             <version>2018d.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.9.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Swagger support-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
         </dependency>
     </dependencies>
 

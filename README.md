@@ -16,7 +16,7 @@ mvnw clean install
 # Use
 For example, for Montreal, Quebec, Canada latitude is 45.508888, and the longitude is -73.561668
 So using CURL
-curl --request GET "http://127.0.0.1:9091/api/localization/v1/timezones?latitude=45.508888&longitude=-73.561668"
+curl --request GET "http://127.0.0.1:8080/api/localization/v1/timezones?latitude=45.508888&longitude=-73.561668"
 
 JSON returned:
 {"longitude":-73.561668,"latitude":45.508888,"timezoneId":"America/Toronto"}
