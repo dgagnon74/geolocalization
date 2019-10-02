@@ -1,6 +1,5 @@
-package com.airgraft.services.geolocalization.services;
+package com.airgraft.services.apiaccess.services;
 
-import com.airgraft.services.geolocalization.controllers.LocalizationController;
 import net.iakovlev.timeshape.TimeZoneEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

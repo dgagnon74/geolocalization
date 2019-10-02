@@ -1,4 +1,4 @@
-package com.airgraft.services.geolocalization.config;
+package com.airgraft.services.apiaccess.config;
 
 
 import com.google.common.base.Predicates;

@@ -1,7 +1,7 @@
-package com.airgraft.services.geolocalization.controllers;
+package com.airgraft.services.apiaccess.controllers;
 
-import com.airgraft.services.geolocalization.model.GeolocInfo;
-import com.airgraft.services.geolocalization.services.TimezoneService;
+import com.airgraft.services.apiaccess.model.GeolocInfo;
+import com.airgraft.services.apiaccess.services.TimezoneService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
@@ -13,14 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import net.iakovlev.timeshape.TimeZoneEngine;
-
-import java.util.List;
-import java.util.Optional;
-import java.time.ZoneId;
-
-
-import javax.annotation.PostConstruct;
 
 
 @RestController

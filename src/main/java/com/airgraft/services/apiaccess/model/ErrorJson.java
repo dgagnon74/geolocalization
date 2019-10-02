@@ -1,4 +1,4 @@
-package com.airgraft.services.geolocalization.model;
+package com.airgraft.services.apiaccess.model;
 
 import java.util.Map;
 
