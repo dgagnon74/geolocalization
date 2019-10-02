@@ -6,11 +6,14 @@ Initial requirements are to provide the timezone related to a position defined i
 Interface is described using Swagger. Note that the Swagger file is used to generate the data model and has an input 
 for the corresponding API Gateway (enabling Authentication & QoS support).
 
+http://localhost:8080/swagger-ui.html
+
 # Build
 mvnw clean install
 
 # Run
 mvnw clean install
+
 
 
 # Use
