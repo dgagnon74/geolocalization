@@ -31,7 +31,7 @@ The JSON response is :
 _{"longitude":-73.561668,"latitude":45.508888,"timezoneId":"America/Toronto"}_
 
 # Tradeoffs/decisions I made during development and their reasoning
-The good thing about geoloc data is that it is quite stable so 
+Here are discussion points as requested in the assignment.
 
 ## Access Control Implementation
 We did it using a filter which similar to the way it will implemented in the Api Gateway (using Zuul for example).
