@@ -44,12 +44,13 @@ That said for the assigment we stick to a simple implementation.
 Timezone data are kept in memory and provided by the timeshape library. 
 So a change in Timezone data requires a new deployment but the good thing is that those data don't change often ..
  
-## Use a different URL than the one provided within the assigment
+## We used a different URL than the one provided within the assigment
 The assignment request us to use this url:  _http://api.domain.tld/time_zone?lat=48.8567&lng=2.348692&api_key=CONSUMER_API_KEY_
 
-We decide that this was not an hard requirement, and 
-- choose a path in order to ease api key verification (i.e.: everything under /api is protected, other like /swagger* or /healtcheck are not) 
-- choose a path that introduce versioning
+We decide that this was not an hard requirement, and use this instead url instead :
+_http://127.0.0.1:8080/api/localization/v1/timezones?latitude=45.508888&longitude=-73.561668&api_key=awe_, because
+- it ease api key verification (i.e.: everything under /api is protected, other like /swagger* or /healtcheck are not) 
+- it introduces versioning
 
 ## Use of an existing model has example
 We did start with Initializ to get a basic Maven Spring Boot working project, but all the rest have 
