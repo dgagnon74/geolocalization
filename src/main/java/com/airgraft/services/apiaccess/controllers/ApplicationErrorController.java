@@ -1,6 +1,6 @@
 package com.airgraft.services.apiaccess.controllers;
 
-import com.airgraft.services.apiaccess.model.ErrorJson;
+import com.airgraft.services.apiaccess.model.ErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
@@ -25,10 +25,10 @@ public class ApplicationErrorController implements ErrorController {
     private ErrorAttributes errorAttributes;
 
     @RequestMapping(value = PATH)
-    ErrorJson error(HttpServletRequest request, WebRequest webRequest, HttpServletResponse response) {
+    ErrorResponse error(HttpServletRequest request, WebRequest webRequest, HttpServletResponse response) {
         // Appropriate HTTP response code (e.g. 404 or 500) is automatically set by Spring.
         // Here we just define response body.
-        return new ErrorJson(response.getStatus(), getErrorAttributes(webRequest, debug));
+        return new ErrorResponse(response.getStatus(), getErrorAttributes(webRequest, debug));
     }
 
     @Override

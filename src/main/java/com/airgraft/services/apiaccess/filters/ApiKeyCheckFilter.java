@@ -9,16 +9,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.ResourceAccessException;
-import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Component
 @Order(1)
@@ -28,7 +24,7 @@ public class ApiKeyCheckFilter implements Filter {
 
     /**
      * Simple cache that shall be reset when receiving a async message that
-     * API keys has changed from the pub/sub. Otherwise key can be cached
+     * API keys has changed from the pub/sub. Otherwise key can be cached for a while
      */
     public LRUMap<String, ApiKeyInfo> apiKeyCache = new LRUMap(10, 100);
 
@@ -56,7 +52,7 @@ public class ApiKeyCheckFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
 
-        if (!enabled || !req.getRequestURI().startsWith("/api/")) {
+        if (!enabled || !req.getRequestURI().startsWith("/api/")) { // Access Control only for resources under /api
             chain.doFilter(request, response);
             return;
         }
@@ -67,11 +63,11 @@ public class ApiKeyCheckFilter implements Filter {
             return;
         }
 
-        // Check if we have tha
+        // Check if we have that key already
         ApiKeyInfo cachedKeyInfo = apiKeyCache.get(apiKey);
         long validityLimitMilli = System.currentTimeMillis() + validityDelayMinute * 60 * 1000;
         if ((cachedKeyInfo == null) || (cachedKeyInfo.timestamp < validityLimitMilli)) {
-            // Get ApiKey Info again
+            // Missing Key or Cached Key is now invalid -> Get ApiKey Info again
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<ApiKeyInfo> apiKeyResponse = null;

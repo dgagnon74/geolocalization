@@ -4,8 +4,8 @@ package com.airgraft.services.apiaccess.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(description = "Geolocalization information for a given longitude & latitude ")
-public class GeolocInfo {
+@ApiModel(description = "Geolocalization information related to a given longitude & latitude ")
+public class GeolocInfoResponse {
 
     @ApiModelProperty(notes = "The longitude has a double value")
     private Double longitude;

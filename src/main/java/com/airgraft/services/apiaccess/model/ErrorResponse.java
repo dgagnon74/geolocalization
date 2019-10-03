@@ -2,7 +2,7 @@ package com.airgraft.services.apiaccess.model;
 
 import java.util.Map;
 
-public class ErrorJson {
+public class ErrorResponse {
 
     public Integer status;
     public String error;
@@ -10,7 +10,7 @@ public class ErrorJson {
     public String timeStamp;
     public String trace;
 
-    public ErrorJson(int status, Map<String, Object> errorAttributes) {
+    public ErrorResponse(int status, Map<String, Object> errorAttributes) {
         this.status = status;
         this.error = (String) errorAttributes.get("error");
         this.message = (String) errorAttributes.get("message");

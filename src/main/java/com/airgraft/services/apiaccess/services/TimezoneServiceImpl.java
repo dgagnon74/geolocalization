@@ -9,6 +9,9 @@ import javax.annotation.PostConstruct;
 import java.time.ZoneId;
 import java.util.Optional;
 
+/**
+ * In-Memory Timezone Service which delegate the work to timeshape.
+ */
 @Service
 public class TimezoneServiceImpl implements TimezoneService {
     static Logger LOG = LoggerFactory.getLogger(TimezoneService.class);
