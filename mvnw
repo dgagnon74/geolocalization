@@ -222,8 +222,8 @@ else
     echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
   fi
   jarUrl="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.4.2/maven-wrapper-0.4.2.jar"
-  while IFS="=" read key value; do
-    case "$key" in wrapperUrl)
+  while IFS="=" read keyEntity value; do
+    case "$keyEntity" in wrapperUrl)
       jarUrl="$value"
       break
       ;;

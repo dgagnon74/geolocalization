@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.airgraft.services</groupId>
-    <artifactId>geo-localization</artifactId>
+    <artifactId>geoloc</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <description>A Simple Geo localization Service</description>
 

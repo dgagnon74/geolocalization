@@ -27,7 +27,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder().title("Localization Micro-Service API")
-                .description("This Employee Management REST API")
+                .description("Geo Localisation Service REST API")
                 .contact(new Contact("Airgraft", "airgraft.com", "david@airgraft.com"))
                 .version("1.0.0")
                 .build();
