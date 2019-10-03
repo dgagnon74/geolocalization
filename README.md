@@ -41,8 +41,8 @@ For production we can consider caching it at the cluster level instead.
 That said for the assigment we stick to a simple implementation.
 
 ## Data in memory
-Timezone data are kept in memory and provide by the timeshape library. So a change in Timezone data require a new deployment.
-The good thing is that those data are quite stable :-)
+Timezone data are kept in memory and provided by the timeshape library. 
+So a change in Timezone data requires a new deployment but the good thing is that those data don't change often ..
  
 ## Use a different URL than the one provided within the assigment
 The assignment request us to use this url:  _http://api.domain.tld/time_zone?lat=48.8567&lng=2.348692&api_key=CONSUMER_API_KEY_
