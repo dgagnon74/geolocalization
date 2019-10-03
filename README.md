@@ -73,6 +73,14 @@ A CI Pipeline will create maven version of that API. Then will create a Docker I
 be automatically tested.
 
 Then deploying in production is done the same way. Automatically if your are supporting Continuous Delivery.
+### Explain how the API Key System could be used for rate limiting and monetization in the future
+Typically a customer goes on our website to request an api_key and buy a SLA for a given price. 
+
+The SLA defines how the service will be provided (e.g.: nb requests per minutes/hours/total, etc., priority processing, etc.)
+
+Then an API GATEWAY will have for mission to apply access control (instead of the micro-service). 
+So the GATEWAY will get the SLA information using the api key and will grant access accordingly 
+to the SLA. Of course it also record usage too.
 
 ## When to stop the assigment
 There still more work to make it better! But enough - I believe - in order for your
