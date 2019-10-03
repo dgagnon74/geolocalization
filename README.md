@@ -77,4 +77,4 @@ Then deploying in production is done the same way. Automatically if your are sup
 ## When to stop the assigment
 There still more work to make it better! But enough - I believe - in order for your
 to have an understanding of what I know and taste of the code I can produce :-) 
-Basically I timeboxed the assigment in few hours.
+Basically I timeboxed the assigment to few hours.
