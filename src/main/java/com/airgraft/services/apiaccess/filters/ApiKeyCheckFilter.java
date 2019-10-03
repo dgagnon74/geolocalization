@@ -8,6 +8,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestTemplate;
 
@@ -66,21 +67,19 @@ public class ApiKeyCheckFilter implements Filter {
         // Check if we have that key already
         ApiKeyInfo cachedKeyInfo = apiKeyCache.get(apiKey);
         long validityLimitMilli = System.currentTimeMillis() + validityDelayMinute * 60 * 1000;
-        if ((cachedKeyInfo == null) || (cachedKeyInfo.timestamp < validityLimitMilli)) {
+        if ((cachedKeyInfo == null) || (cachedKeyInfo.timestamp > validityLimitMilli)) {
             // Missing Key or Cached Key is now invalid -> Get ApiKey Info again
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<ApiKeyInfo> apiKeyResponse = null;
             try {
                 apiKeyResponse = restTemplate.getForEntity(serviceUrl + "/" + apiKey, ApiKeyInfo.class);
+            } catch (HttpClientErrorException e) { // Not found or other error -> Deny access
+                res.sendError(HttpServletResponse.SC_FORBIDDEN, "Api Key not found");
+                return;
             } catch (ResourceAccessException e) {
                 LOG.warn("Unable to access the server at " + serviceUrl + "/" + apiKey);
                 res.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE, "Unable to access the server");
-                return;
-            }
-
-            if (!apiKeyResponse.getStatusCode().equals(HttpStatus.OK)) {
-                res.sendError(HttpServletResponse.SC_FORBIDDEN, "Api Key not found");
                 return;
             }
 
@@ -90,6 +89,7 @@ public class ApiKeyCheckFilter implements Filter {
                 return;
             }
 
+            // Cache the key for future use
             apiKeyCache.put(apiKey, cachedKeyInfo);
         }
 
